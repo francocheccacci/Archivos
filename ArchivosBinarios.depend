@@ -1,13 +1,13 @@
 # depslib dependency file v1.0
-1683114426 source:e:\progra1\ejercicios\archivosbinarios\funcionesarchivos.c
+1683696109 source:e:\progra1\ejercicios\archivosbinarios\funcionesarchivos.c
 	"funcionesArchivos.h"
 	<conio.h>
 
-1683113751 e:\progra1\ejercicios\archivosbinarios\funcionesarchivos.h
+1683683770 e:\progra1\ejercicios\archivosbinarios\funcionesarchivos.h
 	<stdio.h>
 	<stdlib.h>
 
-1683114371 source:e:\progra1\ejercicios\archivosbinarios\main.c
+1683696169 source:e:\progra1\ejercicios\archivosbinarios\main.c
 	<stdio.h>
 	<stdlib.h>
 	"funcionesArchivos.h"

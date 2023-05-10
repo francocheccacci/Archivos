@@ -162,7 +162,7 @@ int ordenarArchivoId(){
     fread(&productos, sizeof(t_product), cant_reg, p_archivo_bin);
 
     for(int i = 0; i < cant_reg - 1; i++){
-        for(int j = 0 ; j < cant_reg ; i++){
+        for(int j = 0 ; j < cant_reg - i - 1 ; j++){
             if(productos[j].id > productos[j+1].id){
                 aux = productos[j];
                 productos[j] = productos[j+1];
@@ -171,11 +171,56 @@ int ordenarArchivoId(){
         }
     }
 
-    fseek(p_archivo_bin,0, SEEK_SET);
-    fwrite(&productos, sizeof(productos), cant_reg, p_archivo_bin);
-    printf("llego");
+    fclose(p_archivo_bin);
+
+    p_archivo_bin = fopen(NOMBRE_ARCHIVO, "wb");
+
+    for (int i = 0 ; i < cant_reg ; i++){
+        fwrite(&productos[i], sizeof(t_product), 1, p_archivo_bin);
+    }
+
     fclose(p_archivo_bin);
 
     listarProductos();
     return cant_reg;
+}
+
+int eliminarDuplicados(){
+    int cant_reg = contarRegistros();
+    t_product producto[cant_reg];
+    ordenarArchivoId();
+
+    FILE* p_archivo_bin;
+    p_archivo_bin = fopen(NOMBRE_ARCHIVO, "rb");
+    if (p_archivo_bin == NULL) {
+        return 0;
+    }
+
+    fread(&producto, sizeof(producto), cant_reg, p_archivo_bin);
+    int j=0;
+    for(int i=1; i < cant_reg - 1 ; i++){
+        if(producto[i].id == producto[j].id){
+            printf("\n Producto %d eliminado. ", producto[i].id);
+        }else{
+            j++;
+            producto[j]=producto[i];
+        }
+    }
+
+    fclose(p_archivo_bin);
+
+    //como ya itere y elimine todos los duplicados, J pasa a ser mi nuevo indice.
+    int cant_unicos = j + 1;
+
+    p_archivo_bin=fopen(NOMBRE_ARCHIVO, "wb");
+
+    fwrite(&producto, sizeof(producto), cant_unicos, p_archivo_bin);
+
+    fclose(p_archivo_bin);
+
+    return 0;
+
+
+
+
 }
