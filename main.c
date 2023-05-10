@@ -17,7 +17,7 @@ int main(){
     printf("4- Consultar producto por id. \n");
     printf("5- Modificar precio de un producto \n");
     printf("6- Ordenar el archivo por ID. \n");
-    printf("7- Ordenar el archivo por Precio.\n");
+    printf("7- Eliminar duplicados. *ordena el archivo*.\n");
     printf("8- Finalizar \n");
 
     printf("Ingrese la opcion deseada: ");
@@ -77,7 +77,8 @@ int main(){
             break;
 
         case 7:
-
+            eliminarDuplicados();
+            continuar();
             break;
 
 

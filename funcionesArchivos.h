@@ -18,6 +18,7 @@ int consultarProducto(int codigo);
 int cambiarPrecioProducto(int id,float precioN);
 int ordenarArchivoId();
 int contarRegistros();
+int eliminarDuplicados();
 void continuar();
 
 #endif // FUNCIONESARCHIVOS_H_INCLUDED
